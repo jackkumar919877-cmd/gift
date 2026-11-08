@@ -1,0 +1,604 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Little Diwali Surprise ❤️</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+    color: #fff4dc;
+    background: radial-gradient(circle at 50% 15%, #55244f, #28143d 45%, #100b20);
+    overflow-x: hidden;
+}
+
+/* Background Stars */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .3;
+    background-image:
+        radial-gradient(2px 2px at 20% 30%, white 50%, transparent 60%),
+        radial-gradient(1px 1px at 70% 20%, white 50%, transparent 60%),
+        radial-gradient(2px 2px at 80% 70%, #ffd98a 50%, transparent 60%);
+    background-size: 230px 190px;
+    z-index: 0;
+}
+
+/* Falling Animation Layer */
+
+#falling-container {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.falling {
+    position: absolute;
+    top: -40px;
+    animation: fall linear forwards;
+    opacity: 0;
+    user-select: none;
+}
+
+@keyframes fall {
+
+    0% {
+        transform: translateY(-40px) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: .8;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+
+}
+
+/* Main Container */
+
+.container {
+    width: 92%;
+    max-width: 760px;
+    margin: auto;
+    padding: 45px 0 60px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.topline {
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #f5c987;
+}
+
+/* Happy Diwali Greeting */
+
+#greeting {
+    display: none;
+    animation: appear 1.2s ease;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 8vw, 75px);
+    margin: 20px 0 10px;
+}
+
+h1 span {
+    color: #ffd98a;
+}
+
+.subtitle {
+    color: #e8cfe0;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 20px auto;
+    max-width: 510px;
+}
+
+.lamps {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin: 30px 0;
+}
+
+.lamp {
+    font-size: 40px;
+    filter: drop-shadow(0 0 15px orange);
+    animation: float 3s infinite ease-in-out;
+}
+
+.lamp:nth-child(2) {
+    animation-delay: .5s;
+}
+
+.lamp:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Card Design */
+
+.card {
+    background: linear-gradient(145deg,
+        rgba(255,255,255,.12),
+        rgba(255,255,255,.05));
+
+    border: 1px solid rgba(255,220,160,.32);
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 20px 70px #08051280;
+    backdrop-filter: blur(10px);
+}
+
+.small {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #f6ca8b;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    margin: 15px 0;
+    color: #fff0d4;
+}
+
+p {
+    line-height: 1.9;
+    color: #f3e4eb;
+    font-size: 15px;
+    margin: 15px 0;
+}
+
+/* Button */
+
+button {
+    border: none;
+    border-radius: 50px;
+    padding: 15px 28px;
+    background: linear-gradient(100deg, #ffd98a, #ffb7bd);
+    color: #35162f;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: .3s;
+    margin-top: 15px;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px #ffb7bd55;
+}
+
+button:disabled {
+    cursor: default;
+    opacity: .8;
+}
+
+/* Hidden Letter */
+
+#letter {
+    display: none;
+    text-align: left;
+    margin-top: 30px;
+    animation: appear 1s ease;
+}
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.letter-inner {
+    border-top: 1px solid #f7d59a55;
+    padding-top: 25px;
+}
+
+/* Momo Name */
+
+.name-reveal {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(45px, 10vw, 75px);
+    text-align: center;
+    color: #ffd98a;
+    text-shadow: 0 0 25px #ffbd6b66;
+    margin: 20px 0;
+}
+
+/* Signature */
+
+.signature {
+    text-align: right;
+    color: #ffd98a;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 23px;
+    margin-top: 25px;
+}
+
+footer {
+    color: #bda4bd;
+    font-size: 11px;
+    margin-top: 30px;
+    letter-spacing: 2px;
+}
+
+/* Surprise Sparkles */
+
+.spark {
+    position: fixed;
+    font-size: 20px;
+    pointer-events: none;
+    z-index: 20;
+    animation: burst 1.8s ease-out forwards;
+}
+
+@keyframes burst {
+
+    0% {
+        transform: translate(0,0) scale(.4);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--x),var(--y)) scale(1.2);
+        opacity: 0;
+    }
+
+}
+
+/* Mobile Responsive */
+
+@media(max-width: 480px) {
+
+    .card {
+        padding: 25px;
+    }
+
+    .container {
+        padding-top: 30px;
+    }
+
+    h2 {
+        font-size: 29px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Continuous Falling Particles -->
+
+<div id="falling-container"></div>
+
+
+<div class="container">
+
+    <div class="topline">
+        A tiny little surprise · Just for you
+    </div>
+
+
+    <!-- Happy Diwali Greeting (Hidden Initially) -->
+
+    <div id="greeting">
+
+        <h1>
+            Happy Diwali,<br>
+            <span>Beautiful Soul ✨</span>
+        </h1>
+
+        <p class="subtitle">
+            Is baar tumhare liye kuch chhota sa…
+            jo shayad tumhare face par smile le aaye. ❤️
+        </p>
+
+        <div class="lamps">
+            <span class="lamp">🪔</span>
+            <span class="lamp">✨</span>
+            <span class="lamp">🪔</span>
+        </div>
+
+    </div>
+
+
+    <!-- Main Surprise Card -->
+
+    <div class="card">
+
+        <div class="small">
+            Before you open this...
+        </div>
+
+        <h2>Ek baat kahun?</h2>
+
+        <p>
+            Mujhe nahi pata mai har baar apni feelings
+            sahi se express kar pata hoon ya nahi.
+            Isliye socha, iss Diwali tumhare liye
+            kuch alag karun.
+            Bas neeche wala button dabana…
+            aur haan, smile karna mat bhoolna. 😊
+        </p>
+
+        <button id="openBtn" onclick="openSurprise()">
+
+            Open Your Little Surprise 💌
+
+        </button>
+
+
+        <!-- Hidden Surprise Letter -->
+
+        <div id="letter">
+
+            <div class="letter-inner">
+
+                <div class="small" style="text-align:center">
+                    Aapke liye kuch special...
+                </div>
+
+                <div class="name-reveal">
+                    Momo 🥹💕
+                </div>
+
+                <p>
+                    Haan, <b>Iti</b> toh tumhara naam hai…
+                    par mere liye tum meri <b>Momo</b> ho.
+                    Aur pata hai, ye naam soch kar hi
+                    mere face par smile aa jaati hai.
+                </p>
+
+                <p>
+                    Tumhari aankhein… sach mein,
+                    unmein kuch alag hi baat hai.
+                    Kabhi-kabhi bas unhe dekhta rahun,
+                    aur kuch kehne ki zarurat hi na pade.
+                    Itni khoobsurat hain ki shayad main
+                    kabhi unki tareef ke liye perfect
+                    words dhoondh hi na paunn. ❤️
+                </p>
+
+                <p>
+                    Aur tumhari woh chhoti-chhoti
+                    bachchon jaisi harkateinn,
+                    bina baat ke cute si zidd,
+                    mere liye egg roll bnakr lana
+                    aur khud hi chhin kar khana,
+                    tumhara apne inhi andaaz me behave karna…
+                    ye sab cheezein tumhe aur bhi
+                    special bana deti hain.
+
+                    Please kabhi inhe badalna mat,
+                    Mujhe ye walii itii
+                    bahut pasand hai.
+                </p>
+
+                <p>
+                    Main bas chahta hoon ki tum
+                    hamesha aise hi hasti raho,
+                    apni silly si baaton se din achha
+                    banati raho, aur kabhi ye mat
+                    bhoolna ki tum kisi ke liye
+                    kitni precious ho.
+                </p>
+
+                <p>
+                    Is Diwali meri wish bas itni si hai—
+                    tumhari life khushiyon, sukoon aur
+                    dher saari smiles se roshan rahe.
+
+                    Aur jab bhi tum ye page dekho,
+                    tumhe yaad aaye ki kahin koi hai
+                    jo tumhe tumhari har chhoti-badi
+                    baat ke saath pasand karta hai.
+                </p>
+
+                <p>
+
+                    <b>Happy Diwali, meri Momo ❤️</b>
+
+                    <br><br>
+
+                    Apna khayal rakhna…
+                    aur haan, aise hi cute aur soft rahna.
+                    (Waise tumse poochh kar thodi na
+                    keh raha hoon 😌)
+
+                </p>
+
+                <div class="signature">
+                    — Tumhara ❤️
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+        LIGHTS · SMILES · AND A LITTLE MAGIC ✨
+    </footer>
+
+</div>
+
+
+<script>
+
+/* CONTINUOUS FALLING ANIMATION */
+
+const fallingContainer =
+    document.getElementById("falling-container");
+
+const particles = ["✨", "⭐", "🌟", "💖", "💕", "✦", "🪔"];
+
+function createFallingParticle() {
+
+    const particle = document.createElement("span");
+
+    particle.className = "falling";
+
+    particle.innerHTML =
+        particles[Math.floor(Math.random() * particles.length)];
+
+    particle.style.left = Math.random() * 100 + "vw";
+
+    particle.style.fontSize =
+        (12 + Math.random() * 17) + "px";
+
+    const duration = 5 + Math.random() * 7;
+
+    particle.style.animationDuration = duration + "s";
+
+    fallingContainer.appendChild(particle);
+
+    setTimeout(() => {
+        particle.remove();
+    }, duration * 1000);
+
+}
+
+/* New particles continuously */
+
+setInterval(createFallingParticle, 300);
+
+
+/* OPEN SURPRISE FUNCTION */
+
+function openSurprise() {
+
+    // Show Happy Diwali Greeting
+
+    const greeting = document.getElementById("greeting");
+
+    greeting.style.display = "block";
+
+
+    // Show Momo's Letter
+
+    const letter = document.getElementById("letter");
+
+    letter.style.display = "block";
+
+
+    // Change Button Text
+
+    const btn = document.getElementById("openBtn");
+
+    btn.innerHTML = "Surprise Opened 💗";
+
+    btn.disabled = true;
+
+
+    // Special Heart Burst Animation
+
+    for (let i = 0; i < 42; i++) {
+
+        let spark = document.createElement("span");
+
+        spark.className = "spark";
+
+        spark.innerHTML = ["✨", "💖", "🌟", "💕"][
+            Math.floor(Math.random() * 4)
+        ];
+
+        spark.style.left =
+            (45 + Math.random() * 10) + "%";
+
+        spark.style.top =
+            (42 + Math.random() * 12) + "%";
+
+        spark.style.setProperty(
+            "--x",
+            (Math.random() * 420 - 210) + "px"
+        );
+
+        spark.style.setProperty(
+            "--y",
+            (Math.random() * 460 - 230) + "px"
+        );
+
+        document.body.appendChild(spark);
+
+        setTimeout(() => {
+            spark.remove();
+        }, 1900);
+
+    }
+
+
+    // Scroll to Happy Diwali Greeting
+
+    setTimeout(() => {
+
+        greeting.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }, 200);
+
+}
+
+</script>
+
+</body>
+
+</html>
